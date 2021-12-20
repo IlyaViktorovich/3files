@@ -15,37 +15,36 @@ def len_list_f (list_file):
 
 def length_file(list_f):
     dict = {}
-    list_f_2 = []
     for name_file in list_f:
         counte = 0
         with open(name_file, encoding='utf=8') as file_s:
             for line in file_s:
                 counte += 1
-        list_f_2.append(counte)
-        dict[name_file] = counte
-    return dict
+        dict[counte] = name_file
+    list1 = []
+    for k in dict:
+        list1.append(k)
+        list1.sort()
+    dict2 = {}
+    for num in range(len(list1)):
+        count = len(list1)
+        while count >= 0:
+            for ke, val in dict.items():
+                if list1[num] == ke:
+                    dict2[ke] = val
+                    count -= 1
+    return dict2
 
-def sorted_file(dict_f, len_f):
-    dict_file = {}
+def read_files (dict):
     list_2 = []
-    list_3 = []
-    for key, value in dict_f.items():
-        list_2.append(key)
-        list_3.append(value)
-    counte_while = len_f
-    counte = 0
-    while counte_while >= 0:
-        for key, value in dict_f.items():
-            if value >= counte:
-                counte = value
-                if value == counte:
-                    dict_file[key] = value
-                    counte_while -= 1
+    for key, value in dict.items():
+        list_2.append(value)
+        list_2.append(str(key))
+        with open(value, encoding='utf=8') as file_s:
+            for line in file_s:
+                list_2.append(line)
+    return list_2
 
-    #print(counte)
-    #print(list_2)
-    #print(list_3)
-    print(dict_file)
 
 
 list_file = path_filtr()
@@ -53,7 +52,6 @@ list_file = path_filtr()
 length_files = length_file(list_file)
 #print (length_files)
 len_f = len_list_f(list_file)
+reads_files = read_files(length_files)
+print(reads_files)
 #print (len_f)
-
-sort = sorted_file(length_files,len_f)
-print(sort)
