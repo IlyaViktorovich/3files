@@ -38,19 +38,19 @@ def length_file(list_f):
 def read_files (dict):
     list_2 = []
     for key, value in dict.items():
-        list_2.append(value)
-        list_2.append(str(key))
+        list_2.append(value + '\n')
+        list_2.append(str(key) + '\n')
         with open(value, encoding='utf=8') as file_s:
             for line in file_s:
                 list_2.append(line)
-    print(list_2)
+    #print(list_2)
     return list_2
 
 def write_file (list):
     with open('add.txt', 'w', encoding='utf=8') as file_s:
         for str_num in list:
-            file_s.writelines(str_num + '\n')
-    #print(list_3)
+            file_s.writelines(str_num)
+
 
 def basic_log ():
     list_file = path_filtr()
