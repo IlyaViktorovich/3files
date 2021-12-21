@@ -43,15 +43,17 @@ def read_files (dict):
         with open(value, encoding='utf=8') as file_s:
             for line in file_s:
                 list_2.append(line)
+    print(list_2)
     return list_2
 
+def write_file (list):
+    with open('add.txt', 'w', encoding='utf=8') as file_s:
+        for str_num in list:
+            file_s.writelines(str_num)
 
 
 list_file = path_filtr()
-#print(list_file)
 length_files = length_file(list_file)
-#print (length_files)
 len_f = len_list_f(list_file)
 reads_files = read_files(length_files)
-print(reads_files)
-#print (len_f)
+write_files = write_file(reads_files)
